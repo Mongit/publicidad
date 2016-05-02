@@ -35,8 +35,10 @@
             ctrl.productos = prod.borrarProductos(ctrl.productos);
         };        
         
+            console.log("AgrenuvoCotrn")
         var linkObj = linkFactory();
         ctrl.agregarLink = function() {
+            console.log("AgregarLink");
             ctrl.link = linkObj.agregarLink(ctrl.links, ctrl.link);
         };
         ctrl.removerLink = function() {

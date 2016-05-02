@@ -31,7 +31,7 @@ describe("nuevo controller", function(){
         prod = productosFactory();
         link = linkFactory();
     }));
-    
+        
     it('borrar maker', function() {
         var controller = $controller('NuevoPublicoController');
         spyOn(controller, "borrarMarker");
@@ -86,25 +86,63 @@ describe("nuevo controller", function(){
         expect(controller.borrarProductos).toHaveBeenCalled();
         expect(controller.productos).toEqual([]);
     });
-     it('borrar productos', function() {
+  /*   it('borrar links', function() {
         var controller = $controller('NuevoPublicoController');
-        var link1 = "link1";
-        var link2 = "link2";
+        var link1 = "www.link.com";
+        var link2 = "www.link2.com";
         var links = [link1];
         controller.links = links;
         controller.link = link2;
                   
         spyOn(controller, "agregarLink").and.callThrough();
         spyOn(link, "agregarLink").and.returnValue(true);
-         
+        
         controller.agregarLink();
         expect(controller.agregarLink).toHaveBeenCalled();
         expect(link.agregarLink).toHaveBeenCalledWith(links,link);
         //expect(controller.productos).toEqual([]);
     });
+*/
 
 
-
+    it("Agregar Links", function() {
+        /*var controller = $controller('NuevoPublicoController');
+        var links = [];
+        var link = link;
+        
+        console.log("Ant");
+        
+        $controller('NuevoPublicoController');
+        spyOn(controller, "agregarLink").and.callThrough();
+        
+        controller.agregarLink();
+        
+        console.log("Des"); 
+        
+        expect(controller.agregarLink).toHaveBeenCalled(); 
+        */
+        var controller = $controller('NuevoPublicoController');
+        //var links = [];
+        //controller.link = link;
+        var link1 = "www.link.com";
+        var link2 = "www.link2.com";
+        var links = [link1];
+        controller.links = links;
+        controller.link = "www.link2.com";//link2;
+        console.log("Ant");
+        
+        $controller('NuevoPublicoController');
+        spyOn(controller, "agregarLink").and.callThrough();
+        spyOn(link, "agregarLink").and.returnValue(true);
+        
+        controller.agregarLink();
+        
+        console.log("Des " + link.agregarLink); 
+        
+        expect(controller.agregarLink).toHaveBeenCalled(); 
+        expected(link.agregarLink).toHaveBeenCalledWith(links, controller.link);
+        
+    });
     
 /*    it('changes location on Save', function() {
         var controller = $controller('NuevoController');
