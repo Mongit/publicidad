@@ -5,9 +5,13 @@ describe("nuevo controller", function(){
     
     var $controller; 
     var $httpMock; 
+    var route; 
+    
     var $locationCaptured; 
     var mapa;
     var prod;
+    var paginasProx;
+    var usuariosProx;
     var link;
     
     beforeEach(function() {
@@ -25,13 +29,31 @@ describe("nuevo controller", function(){
         $httpBackend.when('POST', url).respond(false);
     }));
     
-    beforeEach(inject(function($location, mapFactory, productosFactory, linkFactory) {
+    beforeEach(inject(function($routeParams,$location, mapFactory, productosFactory, paginasProxy, usuariosProxy,linkFactory) {
+        route = $routeParams;
         $locationCaptured = $location;
-        mapa = mapFactory();
-        prod = productosFactory();
-        link = linkFactory();
+        mapa = mapFactory;
+        prod = productosFactory;
+        paginasProx = paginasProxy;
+        usuariosProxy = usuariosProxy;
+        link = linkFactory;
     }));
+<<<<<<< HEAD
         
+=======
+     function makeController() {    
+        objectUnderTest = $controller('NuevoPublicoController', {
+            $routeParams:route,
+            $location: $locationCaptured, 
+            mapFactory: mapa, 
+            productosFactory: prod,
+            paginasProxy: paginasProx,
+            usuariosProxy: usuariosProx,
+            linkFactory: link
+        });
+    }
+    /*
+>>>>>>> 1924ffbf0db1590b5d364965af3d10739f0cddae
     it('borrar maker', function() {
         var controller = $controller('NuevoPublicoController');
         spyOn(controller, "borrarMarker");
@@ -75,7 +97,7 @@ describe("nuevo controller", function(){
         controller.removerProducto();
         expect(controller.removerProducto).toHaveBeenCalled();
     });
-    //este esta muy bien, se hace la llamada de verdad, entonces  la instancia que está dentro del metodo regresa un valor que se refleja en la instancia a probar.
+    //este esta muy bien, se hace la llamada de verdad, entonces  la instancia que está dentro del metodo regresa un valor que se refleja en la instancia a probar. buscar la respuesta en spy.create.
     it('borrar productos', function() {
         var controller = $controller('NuevoPublicoController');
         var productos = [{texto:"hola"}];
@@ -86,7 +108,7 @@ describe("nuevo controller", function(){
         expect(controller.borrarProductos).toHaveBeenCalled();
         expect(controller.productos).toEqual([]);
     });
-  /*   it('borrar links', function() {
+/*   it('borrar links', function() {
         var controller = $controller('NuevoPublicoController');
         var link1 = "www.link.com";
         var link2 = "www.link2.com";
@@ -96,14 +118,8 @@ describe("nuevo controller", function(){
                   
         spyOn(controller, "agregarLink").and.callThrough();
         spyOn(link, "agregarLink").and.returnValue(true);
-        
-        controller.agregarLink();
-        expect(controller.agregarLink).toHaveBeenCalled();
-        expect(link.agregarLink).toHaveBeenCalledWith(links,link);
-        //expect(controller.productos).toEqual([]);
-    });
-*/
 
+*/
 
     it("Agregar Links", function() {
         /*var controller = $controller('NuevoPublicoController');
